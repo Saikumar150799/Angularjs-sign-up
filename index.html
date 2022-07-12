@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="./app.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>SignUp</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div ng-app="signUp" ng-controller="signUpController" class="form">
+            <h1>SIGN UP</h1>
+            <h5 ng-show="sign.$valid">{{msg}}</h5>
+            <form novalidate name="sign">
+                <div class="fields">
+                    <div class="form-group">
+                        <input type="text" placeholder="Enter first name" ng-model="user.firstName" name="uName"
+                            required minlength="3">
+                        <div ng-show="sign.uName.$touched" class="error">
+                            <small ng-show="sign.uName.$error.required">Required first name.</small>
+                            <small ng-show="sign.uName.$error.minlength">should 3 digit greater</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Enter last name" ng-model="user.lastName" name="uLastName"
+                            required minlength="3">
+                        <div ng-show="sign.uLastName.$touched" class="error">
+                            <small ng-show="sign.uLastName.$error.required">Required last name.</small>
+                            <small ng-show="sign.uLastName.$error.minlength">should 3 digit greater</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Enter email" ng-model="user.email" name="uEmail"
+                            ng-pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+                            required>
+                        <div ng-show="sign.uEmail.$touched" class="error">
+                            <small ng-show="sign.uEmail.$error.required">Required phone number</small>
+                            <small ng-show="sign.uEmail.$error.pattern">Invalid email</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Enter phone" ng-model="user.phone" name="uPhone" minlength="10"
+                            maxlength="10" required>
+                        <div ng-show="sign.uPhone.$touched" class="error">
+                            <small ng-show="sign.uPhone.$error.required">Required phone number</small>
+                            <small ng-show="sign.uPhone.$error.minlength">should be 10 digits</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Enter password" ng-model="user.password" name="uPassword"
+                            ng-pattern="/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/" required>
+                        <div ng-show="sign.uPassword.$touched" class="error">
+                            <small ng-show="sign.uPassword.$error.required">Required password </small>
+                            <small ng-show="sign.uPassword.$error.pattern">6 character at least 1 digit and 1 special
+                                character</small>
+                        </div>
+                    </div>
+                    <div class="submit">
+                        <button type="reset">Reset</button>
+                        <button type="submit" ng-click="submitForm(user)" ng-disabled="sign.$invalid">submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
