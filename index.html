@@ -16,8 +16,10 @@
     <div class="container">
         <div ng-app="signUp" ng-controller="signUpController" class="form">
             <h1>SIGN UP</h1>
-            <h5 ng-show="sign.$valid">{{msg}}</h5>
-            <form novalidate name="sign">
+            <div class="logged">
+                <h5 ng-show="sign.$valid">{{msg}}</h5>
+            </div>
+            <form novalidate name="sign" ng-submit="submitForm(user)">
                 <div class="fields">
                     <div class="form-group">
                         <input type="text" placeholder="Enter first name" ng-model="user.firstName" name="uName"
@@ -63,7 +65,7 @@
                     </div>
                     <div class="submit">
                         <button type="reset">Reset</button>
-                        <button type="submit" ng-click="submitForm(user)" ng-disabled="sign.$invalid">submit</button>
+                        <button type="submit"  ng-disabled="sign.$invalid">submit</button>
                     </div>
                 </div>
             </form>

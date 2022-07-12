@@ -21,8 +21,11 @@
     border-radius: 5px;
 }
 
-.container .form h1 {
-    margin-bottom: 2rem;
+
+.container .form .logged{
+    color: rgb(126, 199, 16);
+
+    margin: 1rem;
 }
 
 .container form .fields {
